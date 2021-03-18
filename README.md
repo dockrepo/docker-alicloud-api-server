@@ -4,6 +4,8 @@
 
 提供封装的5个接口： 可参考[接口文档](https://help.aliyun.com/document_detail/124923.html?spm=a2c4g.11174283.6.628.40cf571fdGkRqF#title-fbv-si0-ict)
 
+swagger ui 文档地址：http://localhost:7899/api/docs/swagger
+
 ```js
     /**
      * @swagger
