@@ -1,0 +1,15 @@
+name: Deploy
+on:
+    push:
+        branches:
+            - master
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy
+              env:
+                  token: ${{ secrets.DOCKERHUB_TOKEN }}
+              run:  |
+                curl -X POST https://hub.docker.com/api/build/v1/source/c5dac20f-eb64-4ba4-ad39-62a4195b15a5/trigger/$token/call/
+              

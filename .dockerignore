@@ -5,6 +5,8 @@ test
 
 build.sh
 dev.sh
+.github
 
 nodemon.json
+node_modules
 .env
