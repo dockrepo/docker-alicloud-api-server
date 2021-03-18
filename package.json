@@ -1,0 +1,32 @@
+{
+    "name": "alicloud-api-server",
+    "description": "[Docker] alicloud api.",
+    "version": "1.0.0",
+    "private": true,
+    "main": "index.js",
+    "license": "MIT",
+    "author": {
+        "name": "Zyao89",
+        "email": "zyao89@gmail.com"
+    },
+    "scripts": {
+        "nodemon": "nodemon -x 'npm run dev'",
+        "showAlias": "micro-app show alias",
+        "dev": "micro-app serve",
+        "start": "micro-app start"
+    },
+    "dependencies": {
+        "@alicloud/pop-core": "^1.7.10",
+        "@micro-app/cli": "^0.4.0",
+        "@micro-app/plugin-koa": "0.1.0",
+        "joi": "^17.4.0",
+        "koa": "^2.13.1",
+        "koa-body": "^4.2.0",
+        "koa-compose": "^4.1.0",
+        "koa-router": "^10.0.0"
+    },
+    "devDependencies": {
+        "eslint-config-2o3t": "^2.0.1",
+        "nodemon": "^2.0.7"
+    }
+}

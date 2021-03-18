@@ -1,0 +1,54 @@
+{
+    "exclude": [
+        "node_modules"
+    ],
+    "compilerOptions": {
+        "baseUrl": "./",
+        "paths": {
+            "@/root/*": [
+                "./",
+                "./*"
+            ],
+            "@/src/*": [
+                "./src",
+                "./src/*"
+            ],
+            "@/app/*": [
+                "./src/app",
+                "./src/app/*"
+            ],
+            "@/config/*": [
+                "./src/config",
+                "./src/config/*"
+            ],
+            "@/helper/*": [
+                "./src/helper",
+                "./src/helper/*"
+            ],
+            "@/plugin/*": [
+                "./src/plugin",
+                "./src/plugin/*"
+            ],
+            "@/middleware/*": [
+                "./src/middleware",
+                "./src/middleware/*"
+            ],
+            "@/router/*": [
+                "src/routes",
+                "src/routes/*"
+            ],
+            "@/utils/*": [
+                "./src/utils",
+                "./src/utils/*"
+            ],
+            "@/controller/*": [
+                "./src/controller",
+                "./src/controller/*"
+            ],
+            "@/service/*": [
+                "./src/service",
+                "./src/service/*"
+            ]
+        }
+    }
+}

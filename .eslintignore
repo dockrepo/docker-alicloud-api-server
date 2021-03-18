@@ -1,0 +1,4 @@
+node_modules/
+polyfill.min.js
+public/
+_*

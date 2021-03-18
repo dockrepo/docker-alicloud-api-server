@@ -1,0 +1,10 @@
+temp
+logs
+pids
+test
+
+build.sh
+dev.sh
+
+nodemon.json
+.env
