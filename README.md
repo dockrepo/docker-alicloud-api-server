@@ -9,7 +9,7 @@ swagger ui 文档地址：http://localhost:7899/api/docs/swagger
 ```js
     /**
      * @swagger
-     * /api/aliyun/AddDomainRecord:
+     * /api/v1/aliyun/AddDomainRecord:
      *   post:
      *     summary: 根据传入参数添加解析记录
      *     description: 根据传入参数添加解析记录
@@ -32,7 +32,7 @@ swagger ui 文档地址：http://localhost:7899/api/docs/swagger
 
     /**
      * @swagger
-     * /api/aliyun/UpdateDomainRecord:
+     * /api/v1/aliyun/UpdateDomainRecord:
      *   post:
      *     summary: 根据传入参数修改解析记录
      *     description: 根据传入参数修改解析记录
@@ -55,7 +55,7 @@ swagger ui 文档地址：http://localhost:7899/api/docs/swagger
 
     /**
      * @swagger
-     * /api/aliyun/DescribeDomainRecords:
+     * /api/v1/aliyun/DescribeDomainRecords:
      *   post:
      *     summary: 根据传入参数获取指定主域名的所有解析记录列表
      *     description: 根据传入参数获取指定主域名的所有解析记录列表
@@ -73,7 +73,7 @@ swagger ui 文档地址：http://localhost:7899/api/docs/swagger
 
     /**
      * @swagger
-     * /api/aliyun/DescribeSubDomainRecords:
+     * /api/v1/aliyun/DescribeSubDomainRecords:
      *   post:
      *     summary: 根据传入参数获取某个固定子域名的所有解析记录列表
      *     description: 根据传入参数获取某个固定子域名的所有解析记录列表
@@ -91,7 +91,7 @@ swagger ui 文档地址：http://localhost:7899/api/docs/swagger
 
     /**
      * @swagger
-     * /api/aliyun/DescribeDomainRecordInfo:
+     * /api/v1/aliyun/DescribeDomainRecordInfo:
      *   post:
      *     summary: 根据传入参数获取某个固定子域名下的解析记录信息
      *     description: 根据传入参数获取某个固定子域名下的解析记录信息
@@ -109,7 +109,7 @@ swagger ui 文档地址：http://localhost:7899/api/docs/swagger
 
     /**
      * @swagger
-     * /api/aliyun/CheckupAndUpdateDomainRecord:
+     * /api/v1/aliyun/CheckupAndUpdateDomainRecord:
      *   post:
      *     summary: 根据传入参数先校验，后修改解析记录
      *     description: 根据传入参数先校验，后修改解析记录
