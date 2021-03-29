@@ -204,7 +204,7 @@ module.exports = function aliyunCtrl(app) {
 
             const action = new Action(options);
             if (!action[params.Action] || typeof action[params.Action] !== 'function') {
-                throw new Error('Not Found Action:', params.Action);
+                throw new Error('Not Found Action:' + params.Action);
             }
             const result = await action[params.Action](body);
             ctx.result(result);
