@@ -106,6 +106,29 @@ swagger ui 文档地址：http://localhost:7899/api/docs/swagger
      *       200:
      *         description: 成功
      */
+
+    /**
+     * @swagger
+     * /api/aliyun/CheckupAndUpdateDomainRecord:
+     *   post:
+     *     summary: 根据传入参数先校验，后修改解析记录
+     *     description: 根据传入参数先校验，后修改解析记录
+     *     parameters:
+     *          - name: params
+     *            in: body
+     *            required: true
+     *            schema:
+     *              type: object
+     *              example: {
+                                RR: '',
+                                RecordId: '',
+                                Type: '',
+                                Value: '',
+                            }
+     *     responses:
+     *       200:
+     *         description: 成功
+     */
 ```
 
 

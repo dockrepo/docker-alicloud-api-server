@@ -77,6 +77,43 @@ class Action {
 
     /**
      * @swagger
+     * /api/aliyun/CheckupAndUpdateDomainRecord:
+     *   post:
+     *     summary: 根据传入参数先校验，后修改解析记录
+     *     description: 根据传入参数先校验，后修改解析记录
+     *     parameters:
+     *          - name: params
+     *            in: body
+     *            required: true
+     *            schema:
+     *              type: object
+     *              example: {
+                                RR: '',
+                                RecordId: '',
+                                Type: '',
+                                Value: '',
+                            }
+     *     responses:
+     *       200:
+     *         description: 成功
+     */
+    async CheckupAndUpdateDomainRecord(params) {
+        const RecordId = params.RecordId;
+        const info = await this.DescribeDomainRecordInfo({
+            RecordId,
+        });
+        if (!info) throw new Error('Not Found RecordId:', RecordId);
+        if (Object.entries(params).every(([ key, value ]) => {
+            return info[key] === value;
+        })) {
+            throw new Error('更新失败!参数没有发生改变');
+        }
+        const result = await this.UpdateDomainRecord(params);
+        return result;
+    }
+
+    /**
+     * @swagger
      * /api/aliyun/DescribeDomainRecords:
      *   post:
      *     summary: 根据传入参数获取指定主域名的所有解析记录列表
