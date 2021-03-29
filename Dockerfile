@@ -11,7 +11,6 @@ WORKDIR /home/project
 RUN \
     npm install --production
 
-VOLUME [ "/home/project" ]
 ENV DOCS_SWAGGER=true
 
 ENTRYPOINT [ "pm2-runtime", "start", "apps.config.js"]
