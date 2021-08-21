@@ -51,7 +51,7 @@ class IPUtils {
     }
 }
 
-module.exports = function aliyunCtrl(app) {
+module.exports = function ipCtrl(app) {
     const router = app.$newRouter();
     const config = app.$config || {};
 

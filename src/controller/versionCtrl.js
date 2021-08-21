@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function aliyunCtrl(app) {
+module.exports = function versionCtrl(app) {
     const router = app.$newRouter();
     const config = app.$config || {};
 

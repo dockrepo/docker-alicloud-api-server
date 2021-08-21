@@ -143,3 +143,14 @@ docker run -d --name alicloud-api-server \
     --restart unless-stopped \
     zyao89/alicloud-api-server
 ```
+
+其中，
+
+`$ACCESS_KEY_ID` 为阿里云的 AccessKey ID
+`$ACCESS_KEY_SECRET` 为阿里云的 AccessKey Secret
+
+详细获取方式参考官方文档 [如何获取AccessKey ID和AccessKey Secret](https://help.aliyun.com/knowledge_detail/38738.html)
+
+## 详细使用说明
+
+- [自建API服务器实现阿里云DDNS(动态域名)更新](https://zyao89.cn/s/126ea6eb.html)
