@@ -1,0 +1,17 @@
+version: '2'
+# version: '3'
+
+services:
+    alicloud_api_server:
+        container_name: alicloud_api_server
+        hostname: alicloud_api_server
+        image: zyao89/alicloud-api-server:latest
+        restart: always
+        ports:
+            - '7899:7899'
+        environment:
+            # Aliyun API_KEY
+            - ACCESS_KEY_ID=xxxxx # 请自行修改
+            - ACCESS_KEY_SECRET=xxxxx # 请自行修改
+            # 开启 Swagger
+            - DOCS_SWAGGER=true
