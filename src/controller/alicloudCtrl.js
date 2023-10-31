@@ -3,6 +3,7 @@
 
 const Core = require('@alicloud/pop-core');
 const Joi = require('joi');
+const IPUtils = require('../utils/IPUtils');
 
 class Action {
     constructor(options) {
@@ -184,6 +185,49 @@ class Action {
             method: 'POST',
         };
         const result = await this.client.request('DescribeDomainRecordInfo', params, requestOption);
+        return result;
+    }
+
+
+    /**
+     * @swagger
+     * /api/v1/aliyun/AutoUpdateDomainRecord:
+     *   post:
+     *     summary: 根据传入参数自动更新解析记录信息
+     *     description: 根据传入参数自动更新解析记录信息（Value不传时，自动获取公网IP）
+     *     parameters:
+     *          - name: params
+     *            in: body
+     *            required: true
+     *            schema:
+     *              type: object
+     *              example: { SubDomain: "a.b.baidu.com", Value: "1.1.1.1" }
+     *     responses:
+     *       200:
+     *         description: 成功
+     */
+    async AutoUpdateDomainRecord(params) {
+        const { error, value } = Joi.object({
+            SubDomain: Joi.string().required(),
+            Value: Joi.string().allow(null),
+        }).validate(params);
+        if (error) throw new Error(error);
+        if (!value.Value) {
+            const ipUtils = new IPUtils();
+            value.Value = await ipUtils.GetStunIP();
+        }
+        const { DomainRecords = {} } = await this.DescribeSubDomainRecords({
+            SubDomain: value.SubDomain,
+        });
+        const Records = (DomainRecords.Record || []).filter(item => item.Status === 'ENABLE');
+        const result = await Promise.all(Records.map(async record => {
+            return await this.CheckupAndUpdateDomainRecord({
+                RecordId: record.RecordId,
+                RR: record.RR,
+                Type: record.Type,
+                Value: value.Value,
+            });
+        }));
         return result;
     }
 }
