@@ -28,7 +28,7 @@ module.exports = function ipCtrl(app) {
      *       200:
      *         description: 成功
      */
-    router.get(apiPrefix + '/', async (ctx, next) => {
+    router.get(apiPrefix + '', async (ctx, next) => {
         try {
             const action = new IPUtils(config.info);
             const result = await action.GetIP();
