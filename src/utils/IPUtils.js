@@ -12,8 +12,24 @@ const HTML_CONTENT = `
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ SERVER_NAME }}</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
+    </style>
 </head>
-<body>{{ CONTENT }}</body>
+<body>
+{{ CONTENT }}
+
+<div style="flex: 1 1 100%; text-align: center;">
+<a href="/api/docs/swagger">Swagger UI</a>
+</div>
+</body>
 </html>
 `;
 
@@ -44,6 +60,7 @@ class IPUtils {
         const $ = cheerio.load(html);
         const $p = $('p').first();
         $p.find('a').first().replaceWith(`<span style="color: green;">${$p.find('a').text()}</span>`);
+        $p.find('a').remove(); // remove others
         const body = $p.html().trim();
         return HTML_CONTENT
             .replace(/{{\s*SERVER_NAME\s*}}/igm, this.info.name)
@@ -52,15 +69,15 @@ class IPUtils {
 
     async GetStunIP() {
         const stun = require('stun');
-        const stunServers = [...new Set([
+        const stunServers = [ ...new Set([
             ...(process.env.STUN_SERVER_LIST || '').split(',').map(item => item.trim()),
             'stun.l.google.com:19302',
             'stun1.l.google.com:19302',
             'stun2.l.google.com:19302',
             'stun3.l.google.com:19302',
             'stun4.l.google.com:19302',
-        ])];
-        while(stunServers.length) {
+        ]) ];
+        while (stunServers.length) {
             const serverIp = stunServers.pop();
             const res = await stun.request(serverIp);
             const address = res.getXorAddress().address;
