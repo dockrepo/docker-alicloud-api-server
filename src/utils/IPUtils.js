@@ -79,10 +79,14 @@ class IPUtils {
         ]) ];
         while (stunServers.length) {
             const serverIp = stunServers.pop();
-            const res = await stun.request(serverIp);
-            const address = res.getXorAddress().address;
-            if (address) {
-                return address;
+            try {
+                const res = await stun.request(serverIp);
+                const address = res.getXorAddress().address;
+                if (address) {
+                    return address;
+                }
+            } catch (e) {
+                console.warn(e);
             }
         }
         return;
