@@ -80,7 +80,10 @@ class IPUtils {
         while (stunServers.length) {
             const serverIp = stunServers.pop();
             try {
-                const res = await stun.request(serverIp);
+                const res = await stun.request(serverIp, {
+                    retries: 3,
+                    timeout: 300,
+                });
                 const address = res.getXorAddress().address;
                 if (address) {
                     return address;
