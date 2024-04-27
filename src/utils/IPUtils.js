@@ -78,7 +78,7 @@ class IPUtils {
             'stun4.l.google.com:19302',
         ]) ];
         while (stunServers.length) {
-            const serverIp = stunServers.pop();
+            const serverIp = stunServers.shift();
             try {
                 const res = await stun.request(serverIp, {
                     retries: 3,
