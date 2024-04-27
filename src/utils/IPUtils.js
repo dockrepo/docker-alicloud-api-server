@@ -86,7 +86,7 @@ class IPUtils {
                     return address;
                 }
             } catch (e) {
-                console.warn(e);
+                console.warn(`[serverIp: ${serverIp}]`, e);
             }
         }
         return;
