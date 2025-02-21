@@ -10,7 +10,7 @@ WORKDIR /home/project
 # yarn install
 # RUN yarn
 RUN \
-    npm install --production
+    yarn install --production
 
 ENV DOCS_SWAGGER=true
 
